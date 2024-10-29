@@ -231,29 +231,465 @@ LOGOSEG SEGMENT AT 0F490h
 LOGOENTRY LABEL WORD
 ;db 0
 ;start:	
-		push ds
-		push es
-		push bp
-		push si
-		push di
-		push cx
-		push dx
+	ASSUME	CS:LOGOSEG,ES:ABS0,DS:LOGOSEG
+	JMP  beginlogo
 		
-		;call begin
-		
-		pop dx
-		pop cx
-		pop di
-		pop si
-		pop bp
-		pop es
-		pop ds
-		
-		ret
-		
-;INCLUDE ALOGBIN
+LOGODATA:
+logo_prt1:
+	db 0AAh,  0AAh,  0B0h,  000h,  000h,  003h,  000h,  000h,  000h,  000h,  000h,  03Fh,  000h,  000h,  00Fh,  0FFh
+	db 0FFh,  0BFh,  0FEh,  0ABh,  0FFh,  0EFh,  0FFh,  0AAh,  0FFh,  0FBh,  0FFh,  0EBh,  0FFh,  0EFh,  0FFh,  0AAh
+	db 0FFh,  0FBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EFh,  0FFh,  0AAh,  0FFh,  0FBh,  0FFh,  0FFh,  0FFh,  0EBh
+	db 0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  024h,  0AAh,  0AAh,  0B0h,  000h,  000h,  00Fh,  000h,  000h,  000h
+	db 000h,  000h,  03Fh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0BFh,  0FEh,  0AAh,  0AAh,  0AFh,  0FFh,  0AAh,  0AAh
+	db 0ABh,  0FFh,  0EBh,  0FFh,  0EFh,  0FFh,  0AAh,  0AAh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EFh,  0FFh
+	db 0AFh,  0FFh,  0FBh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  024h,  0AAh,  0AAh
+	db 0AFh,  000h,  000h,  000h,  0C0h,  000h,  000h,  000h,  000h,  0FFh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0BFh
+	db 0FFh,  0AFh,  0FFh,  0EFh,  0FFh,  0EBh,  0FFh,  0FBh,  0FFh,  0EBh,  0FFh,  0EFh,  0FFh,  0EBh,  0FFh,  0FBh
+	db 0FFh,  0FBh,  0FFh,  0FBh,  0FFh,  0EFh,  0FFh,  0EBh,  0FFh,  0FBh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0FBh
+	db 0FFh,  0FBh,  0FFh,  0EAh,  024h,  0AAh,  0AAh,  0C0h,  000h,  000h,  00Fh,  000h,  000h,  000h,  000h,  000h
+	db 03Fh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0BFh,  0FFh,  0AAh,  0AAh,  0AFh,  0FFh,  0EAh,  0AAh,  0ABh,  0FFh
+	db 0EBh,  0FFh,  0EFh,  0FFh,  0EAh,  0AAh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EFh,  0FFh,  0EAh,  0AAh
+	db 0ABh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  024h,  0AAh,  0AAh,  0ABh,  000h
+	db 000h,  000h,  0F0h,  000h,  000h,  000h,  003h,  0FFh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0AFh,  0FFh,  0FFh
+	db 0FFh,  0ABh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0FFh
+	db 0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0FFh
+	db 0FFh,  0EAh,  024h,  0AAh,  0ABh,  000h,  000h,  000h,  03Ch,  000h,  000h,  000h,  000h,  000h,  00Fh,  000h
+	db 000h,  00Fh,  0FFh,  0FFh,  0AFh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0FBh,  0FFh,  0EBh,  0FFh
+	db 0EBh,  0FFh,  0FFh,  0FFh,  0FBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0FBh,  0FFh
+	db 0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  024h,  0AAh,  0AAh,  0AAh,  0C0h,  000h,  000h
+	db 03Ch,  000h,  000h,  000h,  00Fh,  0FFh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0AFh,  0FFh,  0FFh,  0FFh,  0ABh
+	db 0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0FFh
+	db 0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0FFh,  0FFh,  0EAh
+	db 024h,  0AAh,  0ACh,  000h,  000h,  000h,  0FCh,  000h,  000h,  000h,  000h,  000h,  00Fh,  000h,  000h,  00Fh
+	db 0FFh,  0FFh,  0AFh,  0FFh,  0FFh,  0FFh,  0ABh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0FBh,  0FFh,  0EBh,  0FFh
+	db 0FFh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh
+	db 0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  024h,  0AAh,  0AAh,  0AAh,  0C0h,  000h,  000h,  00Fh,  000h
+	db 000h,  000h,  03Fh,  0FFh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0ABh,  0FFh,  0FFh,  0FEh,  0AAh,  0FFh,  0FFh
+	db 0FFh,  0ABh,  0FFh,  0EBh,  0FFh,  0EAh,  0FFh,  0FFh,  0FFh,  0ABh,  0FFh,  0FFh,  0FFh,  0FFh,  0FFh,  0EAh
+	db 0FFh,  0FFh,  0FFh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0FFh,  0FFh,  0FFh,  0FFh,  0EAh,  024h,  0AAh
+	db 0ACh,  000h,  000h,  003h,  0FCh,  000h,  000h,  000h,  000h,  000h,  00Fh,  000h,  000h,  00Fh,  0FFh,  0FFh
+	db 0ABh,  0FFh,  0FFh,  0FEh,  0AAh,  0FFh,  0FFh,  0FFh,  0AAh,  0FFh,  0FFh,  0FFh,  0EAh,  0FFh,  0FFh,  0FFh
+	db 0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  0FFh,  0FFh,  0FFh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh
+	db 0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  024h,  0AAh,  0AAh,  0AAh,  0B0h,  000h,  000h,  00Fh,  0F0h,  000h,  003h
+	db 0FFh,  0FFh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0AAh,  0FFh,  0FFh,  0FAh,  0AAh,  0BFh,  0FFh,  0FEh,  0ABh
+	db 0FFh,  0EBh,  0FFh,  0EAh,  0BFh,  0FFh,  0FEh,  0ABh,  0FFh,  0EFh,  0FFh,  0EFh,  0FFh,  0EAh,  0BFh,  0FFh
+	db 0FEh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EFh,  0FFh,  0EFh,  0FFh,  0EAh,  024h,  0AAh,  0B0h,  000h
+	db 000h,  003h,  0FCh,  000h,  000h,  000h,  000h,  000h,  00Fh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0AAh,  0FFh
+	db 0FFh,  0FAh,  0AAh,  0BFh,  0FFh,  0FEh,  0AAh,  0BFh,  0FFh,  0FFh,  0EAh,  0BFh,  0FFh,  0FEh,  0ABh,  0FFh
+	db 0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  0BFh,  0FFh,  0FEh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh
+	db 0EBh,  0FFh,  0EAh,  024h,  0AAh,  0AAh,  0AAh,  0ACh,  000h,  000h,  003h,  0FFh,  000h,  03Fh,  0FFh,  0FFh
+	db 000h,  000h,  00Fh,  0FFh,  0FFh,  0AAh,  0BFh,  0FFh,  0EAh,  0AAh,  0AFh,  0FFh,  0FAh,  0ABh,  0FFh,  0EBh
+	db 0FFh,  0EAh,  0AFh,  0FFh,  0FAh,  0ABh,  0FFh,  0EBh,  0FFh,  0ABh,  0FFh,  0AAh,  0AFh,  0FFh,  0FAh,  0ABh
+	db 0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0ABh,  0FFh,  0AAh,  024h,  0AAh,  0C0h,  000h,  000h,  00Fh
+	db 0FCh,  000h,  000h,  000h,  000h,  000h,  00Fh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0AAh,  0BFh,  0FFh,  0EAh
+	db 0AAh,  0AFh,  0FFh,  0FAh,  0AAh,  0AFh,  0FFh,  0FFh,  0EAh,  0AFh,  0FFh,  0FAh,  0ABh,  0FFh,  0EBh,  0FFh
+	db 0EBh,  0FFh,  0EAh,  0AFh,  0FFh,  0FAh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh
+	db 0EAh,  024h,  0AAh,  0AAh,  0AAh,  0ACh,  000h,  000h,  000h,  0FFh,  0FFh,  0FFh,  0FFh,  0FFh,  000h,  000h
+	db 00Fh,  0FFh,  0FFh,  0AAh,  0ABh,  0FEh,  0AAh,  0AAh,  0AAh,  0FFh,  0AAh,  0ABh,  0FFh,  0EBh,  0FFh,  0EAh
+	db 0AAh,  0FFh,  0AAh,  0ABh,  0FFh,  0EAh,  0BEh,  0AAh,  0BEh,  0AAh,  0AAh,  0FFh,  0AAh,  0ABh,  0FFh,  0EBh
+	db 0FFh,  0EBh,  0FFh,  0EAh,  0BEh,  0AAh,  0BEh,  0AAh,  024h,  0ABh,  000h,  000h,  000h,  03Fh,  0FCh,  000h
+	db 000h,  000h,  000h,  000h,  00Fh,  000h,  000h,  00Fh,  0FFh,  0FFh,  0AAh,  0ABh,  0FEh,  0AAh,  0AAh,  0AAh
+	db 0FFh,  0AAh,  0AAh,  0AAh,  0FFh,  0FFh,  0EAh,  0AAh,  0FFh,  0AAh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh
+	db 0EAh,  0AAh,  0FFh,  0AAh,  0ABh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EBh,  0FFh,  0EAh,  024h
 
+logo_prt2:
+	db 000h,  0AAh,  0ABh,  000h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  000h,  024h
+	db 005h,  00Ah,  001h,  003h
+	db 005h,  002h,  001h,  002h,  02Eh,  003h,  002h,  000h,  0AAh,  0AFh,  0FFh,  000h,  03Fh,  0FFh,  0AAh,  000h
+	db 000h,  000h,  024h,  005h,  007h,  001h,  005h,  005h,  001h,  005h,  02Eh,  002h,  002h,  001h,  000h,  0AAh
+	db 0C0h,  000h,  03Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Bh,  001h,  002h,  001h,  004h
+	db 002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh,  0AFh,  000h,  03Fh,  0FFh,  0AAh,  000h,  000h,  000h,  000h
+	db 024h,  005h,  00Ch,  001h,  005h,  001h,  005h,  02Eh,  001h,  001h,  001h,  002h,  000h,  0AAh,  0C0h,  000h
+	db 00Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Bh,  001h,  002h,  001h,  004h,  002h,  001h
+	db 002h,  02Eh,  005h,  000h,  0AAh,  0ABh,  000h,  03Fh,  0FFh,  0FEh,  0AAh,  000h,  000h,  000h,  024h,  005h
+	db 00Ch,  001h,  005h,  001h,  004h,  001h,  02Eh,  002h,  002h,  001h,  000h,  0AAh,  0B0h,  000h,  00Fh,  0FFh
+	db 000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Bh,  001h,  002h,  001h,  004h,  002h,  001h,  002h,  02Eh
+	db 005h,  000h,  0AAh,  0ABh,  0C0h,  000h,  0FFh,  0FEh,  0AAh,  000h,  000h,  000h,  024h,  005h,  00Ch,  001h
+	db 001h,  004h,  005h,  001h,  02Eh,  001h,  001h,  003h,  000h,  0AAh,  0ACh,  000h,  003h,  0FFh,  000h,  00Fh
+	db 0FFh,  0AAh,  000h,  024h,  005h,  00Bh,  001h,  002h,  001h,  004h,  002h,  001h,  002h,  02Eh,  005h,  000h
+	db 0AAh,  0F0h,  000h,  003h,  0FFh,  0FAh,  0AAh,  000h,  000h,  000h,  024h,  005h,  00Dh,  001h,  003h,  001h
+	db 005h,  001h,  02Eh,  002h,  002h,  001h,  000h,  0AAh,  0ACh,  000h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h
+	db 000h,  024h,  005h,  00Bh,  001h,  003h,  004h,  002h,  001h,  002h,  02Eh,  003h,  002h,  000h,  0AAh,  0BCh
+	db 000h,  00Fh,  0FFh,  0FAh,  0AAh,  000h,  000h,  000h,  024h,  005h,  00Dh,  001h,  003h,  001h,  005h,  001h
+	db 02Eh,  002h,  002h,  001h,  000h,  0AAh,  0ABh,  000h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  000h,  024h
+	db 005h,  00Bh,  001h,  003h,  004h,  002h,  001h,  002h,  02Eh,  003h,  002h,  000h,  0AAh,  0AFh,  000h,  03Fh
+	db 0FFh,  0EAh,  0AAh,  000h,  000h,  000h,  024h,  005h,  00Dh,  001h,  003h,  001h,  005h,  001h,  02Eh,  002h
+	db 002h,  001h,  000h,  0AAh,  0C0h,  000h,  03Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Ch
+	db 001h,  002h,  001h,  003h,  002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh,  0ABh,  0C0h,  000h,  0FFh,  0AAh
+	db 000h,  000h,  000h,  000h,  024h,  005h,  00Dh,  001h,  001h,  002h,  006h,  02Fh,  002h,  001h,  001h,  001h
+	db 000h,  0AAh,  0B0h,  000h,  00Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Ch,  001h,  002h
+	db 001h,  003h,  002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh,  0FFh,  000h,  03Fh,  0FFh,  0FAh,  0AAh,  000h
+	db 000h,  000h,  024h,  005h,  00Eh,  001h,  001h,  001h,  005h,  001h,  02Fh,  002h,  002h,  001h,  000h,  0AAh
+	db 0B0h,  000h,  003h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Ch,  001h,  002h,  001h,  003h
+	db 002h,  001h,  002h,  02Eh,  005h,  000h,  000h,  0AAh,  0AFh,  0FFh,  0AAh,  000h,  000h,  000h,  000h,  000h
+	db 024h,  003h,  002h,  00Eh,  001h,  007h,  030h,  001h,  001h,  001h,  001h,  001h,  000h,  0AAh,  0ACh,  000h
+	db 003h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Ch,  001h,  002h,  001h,  003h,  002h,  001h
+	db 002h,  02Eh,  005h,  000h,  000h,  000h,  000h,  000h,  0AAh,  000h,  000h,  000h,  000h,  000h,  024h,  001h
+	db 001h,  001h,  001h,  001h,  046h,  001h,  001h,  001h,  001h,  001h,  000h,  0AAh,  0ABh,  000h,  0FFh,  000h
+	db 00Fh,  0FFh,  0AAh,  000h,  000h,  024h,  005h,  00Ch,  001h,  003h,  003h,  002h,  001h,  002h,  02Eh,  003h
+	db 002h,  000h,  000h,  000h,  000h,  000h,  0AAh,  000h,  000h,  000h,  000h,  000h,  024h,  001h,  001h,  001h
+	db 001h,  001h,  046h,  001h,  001h,  001h,  001h,  001h
+
+logo_prt3:
+	db 000h,  0AAh,  0ABh,  000h,  03Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h
+	db 005h,  00Ch,  001h,  003h,  001h,  002h,  002h,  001h,  002h,  02Eh,  005h,  000h
+	db 0AAh,  0C0h,  000h,  03Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Dh,  001h,  002h,  001h
+	db 002h,  002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh,  0B0h,  000h,  00Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh
+	db 000h,  024h,  005h,  00Dh,  001h,  002h,  001h,  002h,  002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh,  0B0h
+	db 000h,  003h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Dh,  001h,  002h,  001h,  002h,  002h
+	db 001h,  002h,  02Eh,  005h,  000h,  0AAh,  0ACh,  000h,  003h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h
+	db 005h,  00Dh,  001h,  002h,  001h,  002h,  002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh,  0ABh,  000h,  0FFh
+	db 000h,  00Fh,  0FFh,  0AAh,  000h,  000h,  024h,  005h,  00Dh,  001h,  003h,  002h,  002h,  001h,  002h,  02Eh
+	db 003h,  002h,  000h,  0AAh,  0C0h,  000h,  03Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Eh
+	db 001h,  002h,  001h,  001h,  002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh,  0C0h,  000h,  00Fh,  0FFh,  000h
+	db 00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Eh,  001h,  002h,  001h,  001h,  002h,  001h,  002h,  02Eh,  005h
+	db 000h,  0AAh,  0B0h,  000h,  00Fh,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  024h,  005h,  00Eh,  001h,  002h
+	db 001h,  001h,  002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh,  0ACh,  000h,  003h,  0FFh,  000h,  00Fh,  0FFh
+	db 0AAh,  000h,  024h,  005h,  00Eh,  001h,  002h,  001h,  001h,  002h,  001h,  002h,  02Eh,  005h,  000h,  0AAh
+	db 0ACh,  000h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  000h,  024h,  005h,  00Eh,  001h,  003h,  001h,  002h
+	db 001h,  002h,  02Eh,  003h,  002h,  000h,  0AAh,  0ABh,  000h,  0FFh,  000h,  00Fh,  0FFh,  0AAh,  000h,  000h
+	db 024h,  005h,  00Eh,  001h,  003h,  001h,  002h,  001h,  002h,  02Eh,  003h,  002h,  000h,  0AAh,  0C0h,  000h
+	db 03Fh,  000h,  00Fh,  0FFh,  0AAh,  000h,  000h,  024h,  005h,  00Fh,  001h,  002h,  001h,  002h,  001h,  002h
+	db 02Eh,  003h,  002h,  000h,  0AAh,  0C0h,  000h,  00Fh,  000h,  00Fh,  0FFh,  0AAh,  000h,  000h,  024h,  005h
+	db 00Fh,  001h,  002h,  001h,  002h,  001h,  002h,  02Eh,  003h,  002h,  000h,  0AAh,  0B0h,  000h,  00Fh,  000h
+	db 00Fh,  0FFh,  0AAh,  000h,  000h,  024h,  005h,  00Fh,  001h,  002h,  001h,  002h,  001h,  002h,  02Eh,  003h
+	db 002h,  000h,  0AAh,  0ACh,  000h,  003h,  000h,  00Fh,  0FFh,  0AAh,  000h,  000h,  024h,  005h,  00Fh,  001h
+	db 002h,  001h,  002h,  001h,  002h,  02Eh,  003h,  002h,  000h,  000h,  000h,  000h,  000h,  0AAh,  0AFh,  0FFh
+	db 0AAh,  000h,  000h,  024h,  001h,  001h,  001h,  001h,  001h,  00Fh,  001h,  008h,  02Eh,  003h,  002h,  000h
+	db 000h,  000h,  000h,  000h,  0AAh,  000h,  000h,  000h,  000h,  000h,  024h,  001h,  001h,  001h,  001h,  001h
+	db 046h,  001h,  001h,  001h,  001h,  001h
+
+LOGOPROC PROC FAR
+beginlogo:	; 0739
+		MOV   AX, CS
+		MOV   ES, AX
+		MOV   DS, AX
+		MOV   AH, 00
+		MOV   AL, 04
+		INT   10h
+		MOV   AH, 0Bh
+		MOV   BX, 1
+		INT   10h
+		MOV   AH, 0Bh
+		MOV   BX, 0100h
+		INT   10h
+		MOV   BX, 2FA0h ; 8192+4000
+		PUSH  BX
+		MOV   BX, 0FA0h ; 4000 
+		PUSH  BX
+		
+		JMP  draw_p1 ; L_07E2
+L_075E:
+		JMP  draw_p2 ; L_0874
+L_0761:
+		JMP  draw_p3 ; L_08A4
+L_0764:
+		MOV   CH, 2Ah
+L_0766:
+		POP   SI
+		MOV   BX, SI
+		CALL  L_08D0
+		POP   SI
+		PUSH  SI
+		PUSH  BX
+		CALL  L_08D0
+		CALL  L_0812
+		CALL  L_086A
+		DEC   CH
+		CMP   CH, 0
+		JNZ   L_0766
+		
+		MOV   AX, 0EEEEh
+		CALL  sm_delay
+		
+		MOV   BL, 02
+		MOV   DX, 0043h
+		MOV   AL, 0B6h
+		OUT   DX, AL
+		MOV   DX, 0042h
+		MOV   AX, 0533h
+		OUT   DX, AL
+		MOV   AL, AH
+		OUT   DX, AL
+		MOV   DX, 0061h
+		IN    AL, DX
+		MOV   AH, AL
+		OR    AL, 3
+		OUT   DX, AL
+;beep pause						
+		SUB   CX, CX
+L_07A2:		     
+		LOOP  L_07A2
+		DEC   BL
+		JNZ   L_07A2
+	
+		MOV   AL, AH
+		OUT   DX, AL
+	
+		MOV   AX, 0EEEEh
+		CALL  sm_delay
+L_07B1:		     
+		POP   DI
+		POP   SI
+		PUSH  SI
+		PUSH  DI
+		MOV   CL, 050h
+L_07B7:		     
+		MOV   AL, 0
+		MOV   BYTE PTR ES:[DI], AL
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		INC   DI
+		DEC   CL
+		CMP   CL, 0
+		JNZ   L_07B7
+		CMP   DI, 0FF0h
+		JZ    exitlogo
+		CALL  L_083E
+		MOV   AX, 0A55h
+		CALL  sm_delay
+		JMP  L_07B1
+exitlogo: ;L_07D9:		     
+		MOV   AH, 0
+		MOV   AL, 1
+		INT   10h
+		POP   AX
+		POP   AX
+		RET ;; end 
+LOGOPROC ENDP  
+
+DRAWPROC proc near
+draw_p1: ;L_07E2:		     
+		MOV   DI, offset logodata ;0103h ; was 3
+		MOV   CX, 8
+L_07E8:
+		POP   SI
+		PUSH  SI
+		MOV   AX, 0B800h
+		MOV   ES, AX
+		CALL  L_08FE
+		CALL  L_0940
+		CALL  L_091F
+		INC   DI
+		POP   BX
+		POP   SI
+		PUSH  SI
+		PUSH  BX
+		CALL  L_08FE
+		CALL  L_0940
+		CALL  L_091F
+		INC   DI
+		CALL  L_0812
+		CALL  L_086A
+		LOOPE  L_07E8
+		JMP   L_075E
+L_0812:
+		POP   BX
+		POP   SI
+		CMP   SI, 2000h
+		JNC   L_0824
+		ADD   SI, 2000h
+		SUB   SI, 0050h
+		JMP   L_0828
+	
+	;db 90h
+L_0824:
+		SUB   SI, 2000h
+L_0828:		 
+		POP   AX
+		CMP   AX, 2000h
+		JNC   L_0834
+		ADD   AX, 2000h
+		JMP   L_083A
+	;db 90h
+L_0834:		 
+		SUB   AX, 2000h
+		ADD   AX, 0050h
+L_083A:		 
+		PUSH  AX
+		PUSH  SI
+		PUSH  BX
+		RET
+L_083E:		 
+		POP   SI
+		POP   BX
+		CMP   BX, 2000h
+		JNC   L_084D
+		ADD   BX, 2000h
+		JMP   L_0854
+	;db 90h
+L_084D:
+		SUB   BX, 2000h
+		ADD   BX, 0050h
+L_0854:
+		POP   AX
+		CMP   AX, 2000h
+		JNC   L_0863
+		ADD   AX, 2000h
+		SUB   AX, 0050h
+		JMP   L_0866
+	;db 90h
+L_0863:
+		SUB   AX, 2000h
+L_0866:
+		PUSH  AX
+		PUSH  BX
+		PUSH  SI
+		RET
+L_086A:
+		MOV   AX, 5555 ; =015B3h
+sm_delay:
+		DEC   AX
+		CMP   AX, 0
+		JNZ   sm_delay
+		RET
+draw_p2: ;L_0874:
+		MOV   DH, 12 ; 0ch
+		;MOV   DI, offset logodata + 0370h ; in .com=0473h ; was 373h
+		MOV   DI, offset logo_prt2; in .com=0473h ; was 373h
+		MOV   BP, offset logo_prt2 + 12 ; in .com=047Fh ; was 37fh
+L_087C:
+		POP   SI
+		MOV   BX, SI
+		
+		CALL  L_094E
+		
+		ADD   DI, 12
+		ADD   BP, 12
+		POP   SI
+		PUSH  SI
+		PUSH  BX
+		CALL  L_094E
+		ADD   DI, 12
+		ADD   BP, 12
+		CALL  L_0812
+		CALL  L_086A
+		DEC   DH
+		CMP   DH, 00
+		JNZ   L_087C
+		JMP   L_0761
+draw_p3: ;L_08A4:		 
+		MOV   DH, 012h ; =18
+		MOV   DI, offset logo_prt3 ;logodata+598h; in .com=069Bh ; was 059Bh
+		MOV   BP, offset logo_prt3+12; logodata+598h + 12 ; in .com=06A7h ; was 05A7h
+L_08AC:
+		POP   SI
+		MOV   BX, SI
+		CALL  L_094E
+		POP   SI
+		PUSH  SI
+		PUSH  BX
+		CALL  L_08D0
+		ADD   DI, 12
+		ADD   BP, 12
+		CALL  L_0812
+		CALL  L_086A
+		DEC   DH
+		CMP   DH, 00
+		JNZ   L_08CE
+		JMP  L_0764
+L_08CE:				
+		JMP  L_08AC
+L_08D0:
+		MOV   CL, 05
+L_08D2:
+		MOV   AL, 00
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		DEC   CL
+		CMP   CL, 00
+		JNZ   L_08D2
+		MOV   CL, 70 ; 046h
+L_08E1:		 
+		MOV   AL, 0AAh
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		DEC   CL
+		CMP   CL, 00
+		JNZ   L_08E1
+		MOV   CL, 05
+L_08F0:		 
+		MOV   AL, 00
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		DEC   CL
+		CMP   CL, 00
+		JNZ   L_08F0
+		RET
+L_08FE:
+		PUSH  CX
+		MOV   CX, 5
+		MOV   AL, 00
+L_0904:
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		DEC   CX
+		CMP   CX, 0
+		JNZ   L_0904
+		
+		MOV   CX, 7
+		MOV   AL, 0AAh
+L_0913:
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		DEC   CX
+		CMP   CX, 0
+		JNZ   L_0913
+		POP   CX
+		RET
+L_091F:
+		PUSH  CX
+		MOV   CX, 9
+		MOV   AL, 0AAh
+L_0925:
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		DEC   CX
+		CMP   CX, 0
+		JNZ   L_0925
+		MOV   CX, 5
+		MOV   AL, 00
+L_0934:
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		DEC   CX
+		CMP   CX, 0
+		JNZ   L_0934
+		POP   CX
+		RET
+L_0940:		     
+		MOV   AL, BYTE PTR [DI]
+		CMP   AL, 36 ; 24h
+		JZ    L_094D
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		INC   DI
+		JMP  L_0940
+L_094D:		     
+		RET
+	
+L_094E:		     
+		MOV   CL, BYTE PTR DS:[BP+00]
+L_0952:		     
+		MOV   AL, BYTE PTR [DI]
+		CMP   AL, 36 ; 24h
+		JZ    L_0969
+		MOV   BYTE PTR ES:[SI], AL
+		INC   SI
+		DEC   CL
+		CMP   CL, 00
+		JZ    L_0965
+		
+		JMP  L_0952
+L_0965:		     
+		INC   BP
+		INC   DI
+		JMP  L_094E
+L_0969:
+		RET
+DRAWPROC ENDP
 LOGOSEG ENDS 
+
 ;--------------------------------------------
 ; CLEAN ROM IMAGE
 ;--------------------------------------------
@@ -264,8 +700,70 @@ CODEFOO	ENDS
 ; ROM RESIDENT CODE
 ;--------------------------------------------
 CODE	SEGMENT BYTE AT 0F000H 
-	DB	57344 DUP(?)	; FILL LOWEST 56K = 0xE000
-	;org 57344
+
+;	DB	57344 DUP(?)	; FILL LOWEST 56K = 0xE000
+	DB	05300h DUP(?)	
+	
+; +-------------------------------------------------------------------------+
+; |   ASSISTENT EXTERNAL FLOPPY-SEEK PROCEDURES 						    |
+; +-------------------------------------------------------------------------+
+	ASSUME	CS:CODE,SS:CODE,ES:ABS0,DS:DATA
+EXT_SEEK	PROC	FAR
+	 MOV   AL, 01
+	 PUSH  CX
+	 MOV   CL, DL
+	 ROL   AL, CL
+	 POP   CX
+	 TEST  BYTE PTR SEEK_STATUS, AL
+	 JNZ   A5321
+	 OR    BYTE PTR SEEK_STATUS, AL
+	 MOV   AH, 07
+	 CALL  NEC_OUTPUT		;  NEC_OUTPUT	EE83
+	 MOV   AH, DL
+	 CALL  NEC_OUTPUT		;  NEC_OUTPUT
+	 CALL  CHK_STAT_2		;  CHK_STAT_2	EEE6
+	 JC    A5354
+A5321: 
+	MOV   AH, 0FH
+	 CALL  NEC_OUTPUT
+	 MOV   AH, DL
+	 CALL  NEC_OUTPUT
+	 MOV   AH, CH
+	 TEST  BYTE PTR EQUIP_FLAG+1, 20h
+	 JNZ   A5336
+	 SHL   AH, 1
+A5336:
+	 CALL  NEC_OUTPUT
+	 CALL  CHK_STAT_2
+	 PUSHF
+	 MOV   BX, 0012H
+	 CALL  GET_PARM		; GET_PARM	EEAF
+	 PUSH  CX
+A5344:
+	 MOV   CX, 0226H
+	 OR    AH, AH
+	 JZ    A5351
+A534B:
+	 LOOP  A534B
+	 DEC   AH
+	 JMP  A5344
+A5351:
+	 POP   CX
+	 POPF
+A5353:
+	 RET
+A5354:
+	 MOV   AH, 07
+	 CALL  NEC_OUTPUT
+	 MOV   AH, DL
+	 CALL  NEC_OUTPUT
+	 CALL  CHK_STAT_2
+	 JC    A5353
+	 JMP   A5321
+EXT_SEEK ENDP
+
+;--------------------------------------------
+ORG 57344
 
 VIDEO_PARM1	db  38h,28h,2Bh,0Ah,26h,0,19h
 			db  1Fh,2,7,6,7
@@ -1213,11 +1711,11 @@ F12:						; MOTOR_WAIT1:
 	MOV	CH,1				;SELECT TRACK 1
 	MOV	SEEK_STATUS,DL
 ;	CALL	SEEK				;RECALIBRATE DISKETTE
-	 call	near ptr 5300h	; Asst Call Procedure
+	 call	near ptr EXT_SEEK	;5300h	; Asst Call Procedure
 	JC	F13				;GO TO ERR SUBROUTINE IF ERR
 	MOV	CH,34				;SELECT TRACK 34
 ;	CALL	SEEK				;SEEK TO TRACK 34
-	 call	near ptr 5300h	; Asst Call Procedure
+	 call	near ptr EXT_SEEK	;5300h	; Asst Call Procedure
 	JNC	F14				;OK, TURN MOTOR OFF
 F13:						; DSK_ERR:
 	MOV	SI,OFFSET F3			;GET ADDR OF MSG
@@ -3124,7 +3622,7 @@ J14:					; MOTOR_RUNNING
 ;------ DO THE SEEK OPERATION
 
 	;CALL	SEEK		; MOVE TO CORRECT TRACK
-	call	near ptr 5300h	; ; ASST EXTERNAL FD SEEK PROC
+	call	near ptr EXT_SEEK	;5300h	; ; ASST EXTERNAL FD SEEK PROC
 	POP	AX		; RECOVER COMMAND
 	;MOV	BH,AH		; SAVE COMMAND IN BH
 	;MOV	DH,0		; SET NO SECTORS READ IN CASE OF ERROR
@@ -6624,7 +7122,7 @@ VECTOR_TABLE32	DW	OFFSET VIDEO_IO 	; INTERRUPT 10H
 	;DD	0			; INTERRUPT 1FH -- POINTER TO VIDEO EXT
 	
 	dw 0			; ; INTERRUPT 1FH -- POINTER TO	VIDEO EXT
-	dw 0F400h
+	dw 0F400h		; СИМВОЛЫ ЗНАКОГЕНЕРАТОРА
 
 DUMMY_RETURN:
 	IRET				; DUMMY RETURN FOR BREAK FROM KEYBOARD
